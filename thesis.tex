@@ -1,51 +1,5 @@
 %% Use \documentclass[print]{dissertation} to export the document
-\documentclass[a4paper]{thesis}
-
-\usepackage{booktabs}
-\usepackage{siunitx} % handle units with proper spacing
-\usepackage[final]{pdfpages} % add pdf pages
-\usepackage{gensymb} % \degree symbol
-\usepackage{afterpage} %page selection and control 
-\usepackage{adjustbox} % Limit table
-\usepackage{colortbl} % colors in tables.
-\usepackage{rotating} % table rotation
-\usepackage{microtype} % improves reading
-\usepackage{textcomp} %fix apostrophes
-\usepackage{textgreek}
-
-\usepackage{hyperref}
-\usepackage{lipsum}
-\usepackage[perpage,symbol]{footmisc}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage[version=4]{mhchem}
-\usepackage{float}
-\usepackage{gensymb}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{upgreek}
-\usepackage{textcomp}
-\usepackage{booktabs}
-\usepackage{multicol}
-\usepackage{wrapfig}
-\usepackage{amsmath,amssymb}
-
-\usepackage[T1]{fontenc}
-\usepackage{eurosym}
-
-\usepackage{tcolorbox}
-
-\usepackage[bibencoding=utf-8,
-sorting=none,
-isbn=false,				% Omit ISBN and ISSN from ref.
-url=false, 				% Leave out urls from reference.
-doi=false,				% Add doi to reference list is available.
-sortcites=true,
-sortsets=true,
-style=chem-acs,
-% autocite=supercite,		% Test to see if cite works superscripty.
-% refsection=chapter		% Start a new reference section each time \chapter is called.
-]{biblatex}
+\input{preamble.tex}
 
 \addbibresource{references.bib}
 
@@ -60,7 +14,7 @@ style=chem-acs,
 %% Specify the title and author of the thesis. This information will be used on
 %% the title page (in title/title.tex) and in the metadata of the final PDF.
 \title[Subtitle]{Title of the MSc Thesis}
-\author{First name}{Last name}
+\author{Harry}{Potter}
 
 %% Use Roman numerals for the page numbers of the title pages and table of
 %% contents.
@@ -68,6 +22,10 @@ style=chem-acs,
 
 \include{title/title.tex}
 \include{abstract/abstract.tex}
+
+\printnomenclature
+\listoffigures
+\listoftables
 \tableofcontents
 
 %% Use Arabic numerals for the page numbers of the chapters.
