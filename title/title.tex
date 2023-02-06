@@ -1,0 +1,70 @@
+\begin{titlepage}
+\begin{center}
+
+\parbox[c]{\textwidth}{\includegraphics[height=17mm]{title/logos/RUG_Logo_FSE_Black.png}}\\
+  \vfill
+  
+\vspace*{2\bigskipamount}
+
+%%The title and subtitle are to be inserted in the thesis.tex file.
+%% Print the title.
+{\makeatletter
+\titlestyle\bfseries\LARGE\@title
+\makeatother}
+
+%% Print the optional subtitle.
+{\makeatletter
+\ifx\@subtitle\undefined\else
+    \bigskip
+    \titlefont\titleshape\Large\@subtitle
+\fi
+\makeatother}
+
+%% Uncomment the following lines to insert a vertically-centered picture into
+%% the title page.
+%\vfill
+%\includegraphics{title}
+\bigskip
+\bigskip
+\vfill
+
+%% Apart from the names and dates, the following text is dictated by the
+%% promotieregelement.
+
+{\large\titlefont\series MSc Thesis}
+
+\bigskip
+
+For the Topmaster Nanoscience Programme\\
+Cohort 2021-2023
+
+\bigskip
+
+by
+
+\bigskip
+\bigskip
+
+%% Print the full name of the author.
+\makeatletter
+{\Large\titlefont\bfseries\@firstname\ {\titleshape\@lastname}}
+\makeatother
+\end{center}
+
+\bigskip
+\bigskip
+\bigskip
+
+\vfill
+\noindent{\large \textbf{Supervisor/First Examiner}:}\\[1ex]
+            {\large prof. dr. B. Noheda}\\[3ex]
+% Delete daily supervisor if not applicable
+            {\large \textbf{Daily Supervisor}:}\\[1ex]   
+            {\large F. Janssen}\\[3ex]
+%Delete second examiner if not applicable
+   {\large \textbf{Second Examiner}:}\\[1ex]
+   {\large dr. G. R. Blake}
+%
+  \vfill
+
+\end{titlepage}
