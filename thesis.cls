@@ -137,15 +137,29 @@
 \definecolor{PW-Grey-4}{RGB}{61,79,105}
 \definecolor{PW-Grey-5}{RGB}{61,79,105}
 
+\definecolor{ES-Viridis-1}{RGB}{68, 1, 84}
+\definecolor{ES-Viridis-2}{RGB}{70, 50, 126}
+\definecolor{ES-Viridis-3}{RGB}{54, 92, 141}
+\definecolor{ES-Viridis-4}{RGB}{39, 127, 142}
+\definecolor{ES-Viridis-5}{RGB}{31, 161, 135}
+\definecolor{ES-Viridis-6}{RGB}{74, 193, 109}
+
+\definecolor{ES-Inferno-1}{RGB}{0, 0, 4}
+\definecolor{ES-Inferno-2}{RGB}{40, 11, 83}
+\definecolor{ES-Inferno-3}{RGB}{101, 21, 110}
+\definecolor{ES-Inferno-4}{RGB}{159, 42, 99}
+\definecolor{ES-Inferno-5}{RGB}{212, 72, 66}
+\definecolor{ES-Inferno-6}{RGB}{245, 125, 21}
+
 %% Use cyan as the color for titles, unless the 'print' option is
 %% specified, in which case we use anthracite, a dark gray, which is also used
 %% for the thumb indices.
 \if@print
     \colorlet{title}{anthracite}
 \else
-    \colorlet{title}{PW-Grey-4}
+    \colorlet{title}{ES-Viridis-1}
 \fi
-\colorlet{thumb}{PW-Grey-4}
+\colorlet{thumb}{ES-Viridis-1}
 
 
 
@@ -301,7 +315,12 @@
     \fancyhead{\cropmarks}
     \fancyfoot[C]{\titlefont\thepage}
 }
-
+%
+\newcommand{\ChangeSectionColor}[1]{
+    \colorlet{title}{#1}
+    \fancyhead[LE]{\lthumb{#1}}
+    \fancyhead[RO]{\rthumb{#1}}
+    }
 %% Fancy style for the main matter.
 \fancypagestyle{mainmatter}{%
     \fancyhf{}
