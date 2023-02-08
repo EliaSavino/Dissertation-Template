@@ -45,3 +45,10 @@ style=chem-acs,
 % autocite=supercite,		% Test to see if cite works superscripty.
 % refsection=chapter		% Start a new reference section each time \chapter is called.
 ]{biblatex}
+
+\newcommand{\ChangeSectionColor}[1]{
+    \colorlet{title}{#1}
+    \fancyhead[LE]{\lthumb{#1}}
+    \fancyhead[RO]{\rthumb{#1}}
+    }
+% 

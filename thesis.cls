@@ -67,7 +67,7 @@
     \def\titleshape{\bfseries}
     \def\titlestyle{\titlefont\titleshape\bfseries}
     \if@print
-        \def\headerstyle{\titlefont\titleshape\bfseries}
+        \def\headerstyle{\titlefont\titleshape}%\bfseries}
     \else
         \def\headerstyle{\titlefont\titleshape}
     \fi
@@ -110,7 +110,7 @@
     \def\titlefont{\rmfamily}
     \def\titleshape{}
     \if@print
-        \def\titlestyle{\titlefont\titleshape\bfseries}
+        \def\titlestyle{\titlefont\titleshape}%\bfseries}
     \else
         \def\titlestyle{\titlefont\titleshape}
     \fi
@@ -146,6 +146,8 @@
     \colorlet{title}{PW-Grey-4}
 \fi
 \colorlet{thumb}{PW-Grey-4}
+
+
 
 \if@print
 \geometry{
@@ -234,7 +236,7 @@
 
 %% The lthumb command prints the current chapter number in a thumb index on the
 %% left (even) page.
-\newcommand*\lthumb{%
+\newcommand*\lthumb[1]{%
     \ifthumb%
         \begin{tikzpicture}[remember picture,overlay]
             \coordinate (top margin) at (0pt,1in+\topmargin+\headheight+\headsep);
@@ -246,7 +248,7 @@
             %% Shift the left edge to prevent the rounded corner from showing.
             \coordinate (top left) at ($(top left)-(\thumbedge,0pt)$);
             %% Draw the thumb index.
-            \fill[fill=thumb,rounded corners=\thumbedge](top left) rectangle (bottom right);
+            \fill[fill=#1,rounded corners=\thumbedge](top left) rectangle (bottom right);
             %% Print the chapter number at the center right in the thumb index.
             \coordinate (center right) at ($(bottom right)+(0pt,0.5\thumbheight)$);
             \node at (center right)[anchor=east,inner sep=2\thumbedge]{
@@ -259,8 +261,8 @@
 }
 
 %% rthumb draws a thumb index on the right (odd) page.
-\newcommand*\rthumb{%
-    \ifthumb%
+\newcommand*\rthumb[1]{%
+    \ifthumb
         \begin{tikzpicture}[remember picture,overlay]
             \coordinate (top margin) at (0pt,1in+\topmargin+\headheight+\headsep);
             \coordinate (right margin) at (1in+\evensidemargin,0pt);
@@ -271,7 +273,7 @@
             %% Shift the left right to prevent the rounded corner from showing.
             \coordinate (top right) at ($(top right)+(\thumbedge,0pt)$);
             %% Draw the thumb index.
-            \fill[fill=thumb,rounded corners=\thumbedge](top right) rectangle (bottom left);
+            \fill[fill=#1,rounded corners=\thumbedge](top right) rectangle (bottom left);
             %% Print the chapter number at the center right in the thumb index.
             \coordinate (center left) at ($(bottom left)+(0pt,0.5\thumbheight)$);
             \node at (center left)[anchor=west,inner sep=2\thumbedge]{
@@ -280,7 +282,7 @@
                 \thechapter
             };
         \end{tikzpicture}%
-    \fi%
+    \fi
 }
 
 %% Page style for empty pages.
@@ -304,8 +306,8 @@
 \fancypagestyle{mainmatter}{%
     \fancyhf{}
     %% Page numbers on the top left and top right.
-    \fancyhead[LE]{\cropmarks\lthumb\titlefont\thepage}
-    \fancyhead[RO]{\cropmarks\rthumb\titlefont\thepage}
+    \fancyhead[LE]{\cropmarks\titlefont\thepage}
+    \fancyhead[RO]{\cropmarks\titlefont\thepage}
     %% Chapter name on the left (even) page.
     \fancyhead[RE]{\titlefont\titleshape\nouppercase{\leftmark}}
     %% Section name on the right (odd) page.
@@ -316,8 +318,8 @@
 \pagestyle{mainmatter}
 
 %% Print the current chapter and section at the top of the page in cyan.
-\renewcommand*\chaptermark[1]{\markboth{\thechapter.\ \color{title}#1}{}}
-\renewcommand*\sectionmark[1]{\markright{\thesection.\ \color{title}#1}}
+\renewcommand*\chaptermark[1]{\markboth{\mdseries\thechapter.\ \color{title}#1}{}}
+\renewcommand*\sectionmark[1]{\markright{\mdseries\thesection.\ \color{title}#1}}
 
 %% The setheader command can be used to print the title of unnumbered chapters
 %% in the page header.
