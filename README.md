@@ -7,4 +7,7 @@ This dissertation template is derived form the Template of TUD.
 - The style of the page header has changed, the titles do not show up in bold in the page header
 - It is possible to change the color palette of a section with the command \ChangeSectionColor{color}, this will automatically change section and subsection titles and thumb color
 - Thumbs can be turned off or on in the thesis.tex file by commenting out the \thumbtrue command
+- You can add or remove list of tables, figures nomenclature etc etc in the thesis.tex file.
+
+### Bonus: if working with pdf latex to get nomenclature run the command: makeindex thesis.nlo -s thesis.ist -o thesis.nls
 
