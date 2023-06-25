@@ -323,7 +323,7 @@
     }
 %% Fancy style for the main matter.
 \fancypagestyle{mainmatter}{%
-    \fancyhf{}
+    % \fancyhf{}
     %% Page numbers on the top left and top right.
     \fancyhead[LE]{\cropmarks\titlefont\thepage}
     \fancyhead[RO]{\cropmarks\titlefont\thepage}
