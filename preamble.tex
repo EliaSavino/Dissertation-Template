@@ -1,5 +1,4 @@
-\documentclass[a4paper]{thesis}
-
+% The preamble of this document
 \usepackage{booktabs}
 \usepackage{siunitx} % handle units with proper spacing
 \usepackage[final]{pdfpages} % add pdf pages
@@ -11,10 +10,8 @@
 \usepackage{microtype} % improves reading
 \usepackage{textcomp} %fix apostrophes
 \usepackage{textgreek}
-
 \usepackage{hyperref}
 \usepackage{lipsum}
-% \usepackage[perpage,symbol]{footmisc}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage[version=4]{mhchem}
@@ -31,9 +28,18 @@
 \usepackage{nomencl} %allows to add nomenclature
 \usepackage[T1]{fontenc}
 \usepackage{eurosym}
-
+\usepackage{mathrsfs}
+\usepackage[english]{babel}
+\usepackage[dutch]{babel}
+\usepackage{csquotes}
+\usepackage{braket}
+\usepackage{anyfontsize}
+\usepackage{pdfpages}
+\usepackage{nicefrac, xfrac}
 \usepackage{tcolorbox}
-
+\usepackage[labelfont=up]{caption}
+\usepackage[flushmargin, hang]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \usepackage[bibencoding=utf-8,
 sorting=none,
 isbn=false,				% Omit ISBN and ISSN from ref.
@@ -41,10 +47,17 @@ url=false, 				% Leave out urls from reference.
 doi=false,				% Add doi to reference list is available.
 sortcites=true,
 sortsets=true,
-style=chem-acs,
-% autocite=supercite,		% Test to see if cite works superscripty.
-% refsection=chapter		% Start a new reference section each time \chapter is called.
+style=nature,
+% autocite=supercite,
+refsection=chapter,		% Start a new reference section each time \chapter is called.
+maxnames=3,    % Change this to your preferred cutoff for "et al."
+minnames=2     % Minimum number of names before using "et al."
 ]{biblatex}
+% \usepackage[backend=biber, refsection=chapter, style=chem-acs]{biblatex}
 
+% Ensure numbering of references resets in each chapter
+\addbibresource{references.bib}
 
-% 
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\AfterEndEnvironment{figure}{\noindent\ignorespaces}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
