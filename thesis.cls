@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dissertation}[thesis]
+\ProvidesClass{thesis}[thesis]
 
 \newif\if@nativefonts
 \DeclareOption{nativefonts}{\@nativefontstrue}
@@ -72,7 +72,7 @@
         \def\headerstyle{\titlefont\titleshape}
     \fi
 \else
-    %% The TU Delft house style fonts are Bookman Old Style (serif) for titles
+    %% The fonts are Bookman Old Style (serif) for titles
     %% and Tahoma (sans-serif) for text. Apart from these, we use Courier New
     %% for monospace and Cambria for math.
     \RequirePackage{unicode-math}
@@ -87,8 +87,8 @@
         Path = fonts/,
         Extension = .ttf,
         BoldFont = *-Bold,
-        ItalicFont = *,
-        ItalicFeatures = FakeSlant,
+        ItalicFont = *-Italic,
+        ItalicFeatures = {FakeSlant},
         BoldItalicFont = *-Bold,
         BoldItalicFeatures = FakeSlant
     ]{Tahoma}
@@ -121,35 +121,52 @@
 \definecolor{white}{cmyk}{0,0,0,0}
 \definecolor{black}{cmyk}{0,0,0,1}
 
-\definecolor{RUG-red}{cmyk}{0,1,0.9,0}
-\definecolor{RUG-cyan}{cmyk}{1,0,0,0}
-\definecolor{RUG-aqua}{cmyk}{0.65,0,0.73,0}
+\definecolor{Yellow}{RGB}{255, 205, 0}
+\definecolor{Red}{RGB}{192, 10, 53}
 
-\definecolor{NFO-purple}{cmyk}{0.91,0.89,0.01,0.02}
+\definecolor{Crème}{RGB}{250, 230, 171}
+\definecolor{Oranje}{RGB}{243, 150, 94}
+\definecolor{Bordeaux}{RGB}{170, 21, 85}
+\definecolor{Bruin}{RGB}{110, 59, 35}
+\definecolor{Groen}{RGB}{36, 167, 147}
+\definecolor{Blauw}{RGB}{82, 135, 198}
+\definecolor{Donkerblauw}{RGB}{0, 18, 64}
+\definecolor{Paars}{RGB}{91, 33, 130}
+
+\definecolor{Turkoois}{RGB}{0, 184, 200}
+\definecolor{Roze}{RGB}{239, 96, 163}
+\definecolor{Framboos}{RGB}{165, 0, 52}
+\definecolor{Lichtgroen}{RGB}{108, 194, 74}
+\definecolor{Donkergroen}{RGB}{0, 155, 119}
+\definecolor{Rood}{RGB}{224, 60, 49}
+\definecolor{Indigo}{RGB}{12, 35, 64}
 
 \definecolor{dark-blue}{cmyk}{1,0.66,0,0.4}
 \definecolor{anthracite}{cmyk}{0,0,0,0.8}
 \definecolor{sky-blue}{cmyk}{0.45,0,0.06,0.06}
 
-\definecolor{PW-Grey-1}{RGB}{221,226,233}
-\definecolor{PW-Grey-2}{RGB}{188,197,212}
-\definecolor{PW-Grey-3}{RGB}{139,150,173}
-\definecolor{PW-Grey-4}{RGB}{61,79,105}
-\definecolor{PW-Grey-5}{RGB}{61,79,105}
+\definecolor{Grey-1}{RGB}{221,226,233}
+\definecolor{Grey-2}{RGB}{188,197,212}
+\definecolor{Grey-3}{RGB}{139,150,173}
+\definecolor{Grey-4}{RGB}{61,79,105}
+\definecolor{Grey-5}{RGB}{61,79,105}
 
-\definecolor{ES-Viridis-1}{RGB}{68, 1, 84}
-\definecolor{ES-Viridis-2}{RGB}{70, 50, 126}
-\definecolor{ES-Viridis-3}{RGB}{54, 92, 141}
-\definecolor{ES-Viridis-4}{RGB}{39, 127, 142}
-\definecolor{ES-Viridis-5}{RGB}{31, 161, 135}
-\definecolor{ES-Viridis-6}{RGB}{74, 193, 109}
+\definecolor{Viridis-1}{RGB}{68, 1, 84}
+\definecolor{Viridis-2}{RGB}{70, 50, 126}
+\definecolor{Viridis-3}{RGB}{54, 92, 141}
+\definecolor{Viridis-4}{RGB}{39, 127, 142}
+\definecolor{Viridis-5}{RGB}{31, 161, 135}
+\definecolor{Viridis-6}{RGB}{74, 193, 109}
 
-\definecolor{ES-Inferno-1}{RGB}{0, 0, 4}
-\definecolor{ES-Inferno-2}{RGB}{40, 11, 83}
-\definecolor{ES-Inferno-3}{RGB}{101, 21, 110}
-\definecolor{ES-Inferno-4}{RGB}{159, 42, 99}
-\definecolor{ES-Inferno-5}{RGB}{212, 72, 66}
-\definecolor{ES-Inferno-6}{RGB}{245, 125, 21}
+\definecolor{Inferno-1}{RGB}{0, 0, 4}
+\definecolor{Inferno-2}{RGB}{40, 11, 83}
+\definecolor{Inferno-3}{RGB}{101, 21, 110}
+\definecolor{Inferno-4}{RGB}{159, 42, 99}
+\definecolor{Inferno-5}{RGB}{212, 72, 66}
+\definecolor{Inferno-6}{RGB}{245, 125, 21}
+
+\definecolor{IKB}{cmyk}{0.99,0.77,0,0.41}
+\definecolor{International-Klein-Blue}{RGB}{1, 34, 150}
 
 %% Use cyan as the color for titles, unless the 'print' option is
 %% specified, in which case we use anthracite, a dark gray, which is also used
@@ -157,24 +174,24 @@
 \if@print
     \colorlet{title}{anthracite}
 \else
-    \colorlet{title}{ES-Viridis-1}
+    \colorlet{title}{anthracite}
 \fi
-\colorlet{thumb}{ES-Viridis-1}
+\colorlet{thumb}{anthracite}
 
 
 
 \if@print
-\geometry{
-	papersize = {297mm,210mm},
-	layoutsize = {203mm,286mm},
-	layoutoffset = {4mm,4mm},
-	bindingoffset = -4mm, 
-	textheight = 222mm,
-	textwidth = 155mm,top = 33mm, bottom = 33mm, inner = 31mm, outer=14mm
- }
+    %% In print mode we add a 3 mm bleed on the outside of the page.
+    \geometry{
+        papersize = {173mm,246mm},
+        layoutsize = {167mm,240mm},
+        layoutoffset = {3mm,3mm},
+        bindingoffset = -3mm
+    }
 \else
-\geometry{papersize={203mm,286mm}}
+    \geometry{papersize={170mm,240mm}}
 \fi
+%% We decrease the margins slightly from the default (scale = 0.7).
 \geometry{hscale=0.75,vscale=0.8}
 
 %% Redefine the title command to accept an optional subtitle.
@@ -194,11 +211,11 @@
 
 %% Remove the header and page number on empty pages.
 \def\cleardoublepage{%
-    \clearpage%
-    \if@twoside%
-        \ifodd\c@page%
-        \else%
-            \thispagestyle{empty}%
+   \clearpage%
+   \if@twoside%
+       \ifodd\c@page%
+       \else%
+            \thispagestyle{plain}%
             \vspace*{\fill}%
             \newpage%
         \fi%
@@ -227,7 +244,7 @@
     \newcommand*\cropmarks{}
 \fi%
 
-%%% Thumb indices consist of white text on a rectangular colored background. The
+%%% Thumb indices consist of white text on a rectangular, colored background. The
 %%% font-size is 75% of the size of thumb height.
 \newif\ifthumb
 \newlength\thumbheight
@@ -321,9 +338,10 @@
     \fancyhead[LE]{\lthumb{#1}}
     \fancyhead[RO]{\rthumb{#1}}
     }
+
 %% Fancy style for the main matter.
 \fancypagestyle{mainmatter}{%
-    % \fancyhf{}
+    %\fancyhf{}
     %% Page numbers on the top left and top right.
     \fancyhead[LE]{\cropmarks\titlefont\thepage}
     \fancyhead[RO]{\cropmarks\titlefont\thepage}
@@ -481,8 +499,10 @@
 
 %% Hyperlinks are the color of title, except in print mode when they are all black.
 \hypersetup{
-    colorlinks = true,
+    colorlinks = false,
     citecolor = title,
     linkcolor = title,
     urlcolor = title
 }
+
+\renewcommand*\setheader[1]{\markboth{\mdseries\color{title}#1}{}}
